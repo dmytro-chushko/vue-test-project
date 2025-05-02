@@ -15,7 +15,7 @@ const fruitsMap = {
   <template v-if="isDesktop">
     <HomepageView />
   </template>
-  <template v-else-if="isTablet">This is tablet</template>
+  <!-- <template v-else-if="isTablet">This is tablet</template>
   <template v-else>
     <div v-show="!isDesktop && !isTablet">this is mobile</div>
   </template>
@@ -23,5 +23,5 @@ const fruitsMap = {
   <div :key="fruit" v-for="(fruit, index) in fruits">{{ index }}: {{ fruit }}</div>
   <div :key="fruit" v-for="(fruit, key) in fruitsMap">{{ key }}: {{ fruit }}</div>
   <div :key="val" v-for="val in 5">{{ val }}</div>
-  <div :key="char" v-for="char in 'helllo'">{{ char }}</div>
+  <div :key="char" v-for="char in 'helllo'">{{ char }}</div> -->
 </template>
