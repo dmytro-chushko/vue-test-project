@@ -1,6 +1,7 @@
 <script setup>
 import HomepageView from './views/HomepageView.vue'
 import FavoritePlace from './components/FavoritePlace/FavoritePlace.vue'
+import FavoritePlaces from './components/FavoritePlaces/FavoritePlaces.vue'
 
 const isDesktop = window.innerWidth > 1024
 const isTablet = window.innerWidth <= 1024 && window.innerWidth > 748
@@ -26,6 +27,11 @@ const fruitsMap = {
   <div :key="val" v-for="val in 5">{{ val }}</div>
   <div :key="char" v-for="char in 'helllo'">{{ char }}</div> -->
   <div class="bg-white h-screen w-[400px]">
-    <FavoritePlace />
+    <!-- <FavoritePlaces>
+      <div>THis is super slot</div>
+      <template v-slot:label>This is label</template>
+      <template #list>This is list</template>
+    </FavoritePlaces> -->
+    <FavoritePlaces />
   </div>
 </template>
