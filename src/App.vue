@@ -1,10 +1,19 @@
 <script setup>
+import { ref } from 'vue'
 import HomepageView from './views/HomepageView.vue'
 import FavoritePlace from './components/FavoritePlace/FavoritePlace.vue'
 import FavoritePlaces from './components/FavoritePlaces/FavoritePlaces.vue'
 import RegistrationForm from './components/Auth/RegistrationForm/RegistrationForm.vue'
 import LoginForm from './components/Auth/LoginForm/LoginForm.vue'
-// import IModal from './components/IModal/IModal.vue'
+import IModal from './components/IModal/IModal.vue'
+
+const isOpen = ref(true)
+const closeModal = () => {
+  isOpen.value = false
+}
+const openModal = () => {
+  isOpen.value = true
+}
 
 const isDesktop = window.innerWidth > 1024
 const isTablet = window.innerWidth <= 1024 && window.innerWidth > 748
@@ -37,7 +46,9 @@ const fruitsMap = {
     </FavoritePlaces>
     <FavoritePlaces />
   </div> -->
+  <button @click="openModal">Click me</button>
   <LoginForm @submit="console.log" />
   <RegistrationForm @submit="console.log" />
   <!-- <IModal /> -->
+  <IModal v-if="isOpen" @close="closeModal"> Hello modal </IModal>
 </template>
