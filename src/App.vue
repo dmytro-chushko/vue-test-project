@@ -5,7 +5,7 @@ import FavoritePlace from './components/FavoritePlace/FavoritePlace.vue'
 import FavoritePlaces from './components/FavoritePlaces/FavoritePlaces.vue'
 import RegistrationForm from './components/Auth/RegistrationForm/RegistrationForm.vue'
 import LoginForm from './components/Auth/LoginForm/LoginForm.vue'
-import IModal from './components/IModal/IModal.vue'
+import CreateNewPlaceModal from './components/CreateNewPlaceModal/CreateNewPlaceModal.vue'
 
 const isOpen = ref(true)
 const closeModal = () => {
@@ -50,5 +50,5 @@ const fruitsMap = {
   <LoginForm @submit="console.log" />
   <RegistrationForm @submit="console.log" />
   <!-- <IModal /> -->
-  <IModal v-if="isOpen" @close="closeModal"> Hello modal </IModal>
+  <CreateNewPlaceModal :is-open="isOpen" @close="closeModal" @submit="console.log" />
 </template>
