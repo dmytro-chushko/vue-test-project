@@ -1,4 +1,5 @@
 <script setup>
+import { computed } from 'vue'
 import { ref } from 'vue'
 
 const props = defineProps({
@@ -22,6 +23,17 @@ const changeValue = (event) => {
 }
 
 const emit = defineEmits(['update:modelValue'])
+const baseStyles =
+  'w-full text-sm rounded-[4px] border-[#eaeaea] border-[1px] py-2 px-3 focus:outline-primary'
+const isTextarea = computed(() => {
+  return props.type === 'textarea'
+})
+const inputStyles = computed(() => {
+  return isTextarea.value ? baseStyles + ' resize-none' : baseStyles
+})
+const componentName = computed(() => {
+  return isTextarea.value ? 'textarea' : 'input'
+})
 </script>
 
 <template>
@@ -34,7 +46,9 @@ const emit = defineEmits(['update:modelValue'])
         :placeholder="props.placeholder"
         @input="changeValue"
       /> -->
-      <input
+      <component
+        :is="componentName"
+        :class="inputStyles"
         @focus="() => console.log('focused')"
         class="w-full text-sm rounded-[4px] border-[#eaeaea] border-[1px] py-2 px-3 focus:outline-primary"
         v-bind="{ ...$props, ...$attrs }"

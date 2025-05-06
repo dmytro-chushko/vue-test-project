@@ -23,6 +23,7 @@ const userData = reactive({
     <IInput class="mb-4" label="Повне ім’я" v-model="userData.name" />
     <IInput
       class="mb-4"
+      type="textarea"
       label="Електронна пошта"
       placeholder="email@gmail.com"
       v-model="userData.email"
