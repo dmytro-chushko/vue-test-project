@@ -11,6 +11,13 @@ const superUser = reactive({ name: 'Super user', age: 1000 })
 const { name, age } = superUser
 const buttonVariant = ref('gradient')
 
+const props = defineProps({
+  items: {
+    required: true,
+    type: Array,
+  },
+})
+
 const increment = () => {
   counter.value += 1
 }
@@ -29,31 +36,33 @@ const changeButtonVariant = () => {
 </script>
 
 <template>
-  <div
-    class="px-6"
-    @click.self.once="() => console.log('click1')"
-    @keydown.alt.enter="() => console.log('alt pressed')"
-  >
-    <div class="text-gray">User name: {{ user.name }}</div>
-    <div class="text-gray">Super User name: {{ name }}</div>
+  <div class="px-6">
+    <!-- <div class="text-gray">User name: {{ user.name }}</div>
+    <div class="text-gray">Super User name: {{ name }}</div> -->
     <div class="text-gray mb-4">Додані маркери ({{ counter }})</div>
-    <div class="text-gray mb-4" @click.stop="() => console.log('click2')">Додані маркери</div>
+    <!-- <div class="text-gray mb-4" @click.stop="() => console.log('click2')">Додані маркери</div> -->
     <div class="py-5">
-      <IInput label="Some label" />
-      <a href="/" class="text-black" @click.prevent="() => console.log('prevented')">CLick me</a>
+      <!-- <IInput label="Some label" />
+      <a href="/" class="text-black" @click.prevent="() => console.log('prevented')">CLick me</a> -->
     </div>
     <slot name="label"></slot>
     <slot name="list">
-      <FavoritePlace v-for="n in 4" :key="n" />
+      <FavoritePlace
+        v-for="place in props.items"
+        :key="place.id"
+        :title="place.title"
+        :description="place.description"
+        :img="place.img"
+      />
     </slot>
 
     <slot></slot>
-    <IButton class="w-full mt-10" variant="gradient" @click="increment">Додати маркер</IButton>
-    <IButton class="w-full" @click="changeUserName">Change name</IButton>
+    <IButton class="w-full mt-10" variant="gradient">Додати маркер</IButton>
+    <!-- <IButton class="w-full" @click="changeUserName">Change name</IButton>
     <IButton class="w-full mt-2" @click="changeSuperUserName">Change super name</IButton>
     <IButton class="w-full mt-10" @click="increment">Додати маркер</IButton>
-    <IButton class="w-full mt-10" :variant="buttonVariant" @click="changeButtonVariant"
+    <IButton class="w-full mt-10" variant="gradient" @click="changeButtonVariant"
       >Додати маркер</IButton
-    >
+    > -->
   </div>
 </template>
