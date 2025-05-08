@@ -16,7 +16,13 @@ const props = defineProps({
     required: true,
     type: Array,
   },
+  activeId: {
+    required: true,
+    type: [Number, null],
+  },
 })
+
+const emit = defineEmits(['place-clicked'])
 
 const increment = () => {
   counter.value += 1
@@ -53,6 +59,8 @@ const changeButtonVariant = () => {
         :title="place.title"
         :description="place.description"
         :img="place.img"
+        :is-active="place.id === props.activeId"
+        @click="emit('place-clicked', place.id)"
       />
     </slot>
 
