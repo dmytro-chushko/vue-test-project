@@ -11,7 +11,7 @@ const favoritePlaces = [
   {
     id: 1,
     title: 'New place 1',
-    description: 'SUper description 1',
+    description: 'Super description 1',
     img: '',
     lngLat: [30.523333, 50.490001],
   },
