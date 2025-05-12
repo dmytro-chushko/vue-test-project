@@ -42,7 +42,7 @@ const changeButtonVariant = () => {
 </script>
 
 <template>
-  <div class="px-6">
+  <div class="px-6 text-black">
     <!-- <div class="text-gray">User name: {{ user.name }}</div>
     <div class="text-gray">Super User name: {{ name }}</div> -->
     <div class="text-gray mb-4">Додані маркери ({{ counter }})</div>
@@ -53,6 +53,7 @@ const changeButtonVariant = () => {
     </div>
     <slot name="label"></slot>
     <slot name="list">
+      <div v-if="items.length === 0">Список порожній</div>
       <FavoritePlace
         v-for="place in props.items"
         :key="place.id"
